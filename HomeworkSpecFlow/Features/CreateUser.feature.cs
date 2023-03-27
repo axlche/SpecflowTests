@@ -73,30 +73,23 @@ namespace HomeworkSpecFlow.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 5
+#line hidden
+#line 6
+    testRunner.Given("I login to a course page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create a new user")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("example@mail.com", "pass1234", "123 New St.", "Apt 4", "NewCity", "00001", "1000", "new description", null)]
-        public virtual void CreateANewUser(string email, string password, string address1, string address2, string city, string zip, string annualPayment, string description, string[] exampleTags)
+        public virtual void CreateANewUser()
         {
-            string[] @__tags = new string[] {
-                    "tag1"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("email", email);
-            argumentsOfScenario.Add("password", password);
-            argumentsOfScenario.Add("address1", address1);
-            argumentsOfScenario.Add("address2", address2);
-            argumentsOfScenario.Add("city", city);
-            argumentsOfScenario.Add("zip", zip);
-            argumentsOfScenario.Add("annualPayment", annualPayment);
-            argumentsOfScenario.Add("description", description);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a new user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -116,27 +109,60 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
- testRunner.Given("I login to a course page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 8
- testRunner.When("I click Create User left menu item", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 5
+this.FeatureBackground();
 #line hidden
 #line 9
- testRunner.Then("Page with create user form opens", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("I click Create User left menu item", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.When(string.Format("I enter \"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\", \"<annualPayment\"> and \"{6}\"", email, password, address1, address2, city, zip, description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Then("Page with create user form opens", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "email",
+                            "password",
+                            "address1",
+                            "address2",
+                            "city",
+                            "zip",
+                            "annualPayment",
+                            "description"});
+                table1.AddRow(new string[] {
+                            "example@mail.com",
+                            "pass1234",
+                            "123 New St.",
+                            "Apt 4",
+                            "NewCity",
+                            "00001",
+                            "1000",
+                            "new description"});
 #line 11
- testRunner.And("I click Create button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("I enter user information", ((string)(null)), table1, "When ");
 #line hidden
-#line 12
- testRunner.Then("List of Users page with table opens", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 14
+    testRunner.And("I click Create button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 13
- testRunner.And(string.Format("New user with \"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\", \"{5}\" and \"<annualPayment\"> adde" +
-                            "d to the table", email, address1, address2, city, zip, description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 15
+    testRunner.Then("List of Users page with table opens", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "email",
+                            "address1",
+                            "address2",
+                            "city",
+                            "zip",
+                            "description",
+                            "annualPayment"});
+                table2.AddRow(new string[] {
+                            "example@mail.com",
+                            "123 New St.",
+                            "Apt 4",
+                            "NewCity",
+                            "00001",
+                            "new description",
+                            "1000"});
+#line 16
+    testRunner.And("New user is added to the table", ((string)(null)), table2, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

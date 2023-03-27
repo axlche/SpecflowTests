@@ -11,44 +11,20 @@ using TechTalk.SpecFlow;
 
 namespace HomeworkSpecFlow.Drivers
 {
-    public class SeleniumDriver
+    public class SeleniumDriver : IDisposable
     {
-        public enum Browser
+        public IWebDriver Driver { get; private set; }
+
+        public SeleniumDriver()
         {
-            Chrome,
-            Firefox
+            Driver = new ChromeDriver();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            Driver.Manage().Window.Maximize();
         }
 
-        private IWebDriver driver;
-
-        private readonly ScenarioContext _scenarioContext;
-
-        public SeleniumDriver(ScenarioContext scenarioContext)
+        public void Dispose()
         {
-            _scenarioContext = scenarioContext;
-        }
-
-        //[DataRow("chrome")]
-        //[DataRow("firefox")]
-        public IWebDriver Setup(string browserName)
-        {
-            driver = GetBrowserOption(browserName);
-
-            _scenarioContext.Set(driver, "WebDriver");
-
-            driver.Manage().Window.Maximize();
-
-            return driver;
-        }
-
-        private dynamic GetBrowserOption(string browserName)
-        {
-            if (browserName == "chrome")
-                return new ChromeDriver();
-            if (browserName == "firefox")
-                return new FirefoxDriver();
-
-            return null;
+            Driver.Quit();
         }
     }
 }
