@@ -1,18 +1,12 @@
-using System;
 using HomeworkSpecFlow.Drivers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace HomeworkSpecFlow.StepDefinitions
 {
     [Binding]
-    public class LoginStepDefinitions //: BaseTest
+    public class LoginStepDefinitions
     {
-        private LoginPage _loginPage;
+        private readonly LoginPage _loginPage;
         public LoginStepDefinitions(SeleniumDriver seleniumDriver)
         {
             _loginPage = new LoginPage(seleniumDriver.Driver);

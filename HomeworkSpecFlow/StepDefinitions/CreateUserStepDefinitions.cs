@@ -1,9 +1,4 @@
-using System;
 using HomeworkSpecFlow.Drivers;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -12,11 +7,10 @@ namespace HomeworkSpecFlow.StepDefinitions
     [Binding]
     public class CreateUserStepDefinitions
     {
-        private LoginPage _loginPage;
-        private CreateUserPage _createUserPage;
-        private ListOfUsersPage _listOfUsersPage;
-        private LoginStepDefinitions _loginSteps;
-        private User _user;
+        private readonly LoginPage _loginPage;
+        private readonly CreateUserPage _createUserPage;
+        private readonly ListOfUsersPage _listOfUsersPage;
+        private readonly LoginStepDefinitions _loginSteps;
 
         public CreateUserStepDefinitions(SeleniumDriver seleniumDriver, LoginStepDefinitions loginSteps)
         {
@@ -24,7 +18,6 @@ namespace HomeworkSpecFlow.StepDefinitions
             _createUserPage = new CreateUserPage(seleniumDriver.Driver);
             _listOfUsersPage = new ListOfUsersPage(seleniumDriver.Driver);
             _loginSteps = loginSteps;
-
         }
 
         [StepArgumentTransformation]
